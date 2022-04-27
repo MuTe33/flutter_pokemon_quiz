@@ -1,3 +1,17 @@
+# Important
+
+This repo was initially created by one of my colleagues Mayank where we used this for a joint Tech-
+Talk in Barcelona to showcase our use case of handling feature toggles withfirebase remote config. 
+The tool source is from MediaMarktSaturn on how we use it internally to manage our configs. 
+
+I want to use this repo as a starting point to port the state management to BLoC as I loved the
+idea and design of the app and also it is big enough to showcase the concept of BLoC for learning
+purposes :)
+
+Original Repo: https://github.com/may-andro/flutter_pokemon_quiz
+
+
+
 # pokemon_quiz
 
 Are you the Ultimate Pokemon Master???

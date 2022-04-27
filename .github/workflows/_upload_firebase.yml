@@ -1,0 +1,50 @@
+name: Upload artifacts to Firebase Distribution
+
+on:
+  workflow_call:
+    inputs:
+      flavor:
+        type: string
+        required: true
+    secrets:
+      FIREBASE_APP_ID:
+        required: true
+      FIREBASE_TOKEN:
+        required: true
+
+jobs:
+  upload_android_artifact:
+    name: Upload apk and aab to github
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Download APK Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: app-${{ inputs.flavor }}-release.apk
+      - name: Upload APK to Firebase
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.3.2
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: Testers
+          file: app-${{ inputs.flavor }}-release.apk
+
+  upload_ios_artifact:
+    name: Upload ipa to github
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Download IPA Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ios-${{ inputs.flavor }}
+      - name: Upload IPA to Firebase
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.3.2
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: Testers
+          file: ios-${{ inputs.flavor }}

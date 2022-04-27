@@ -1,0 +1,65 @@
+name: Upload pokedex
+
+on:
+  workflow_call:
+    inputs:
+      flavor:
+        type: string
+        required: true
+    secrets:
+      FIREBASE_CREDENTIALS:
+        required: true
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    env:
+      DART_SDK_VERSION: 2.16.1
+      PATH_FIRESTORE_UPLOADER: ./tools/firestore_uploader
+      PATH_POKEDEX_BUILDER: ./tools/pokedex_builder
+      PATH_FIREBASE_CRED_BUILDER: ./tools/firebase_cred_builder
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup dart environment
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.DART_SDK_VERSION }}
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          # https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./tools/firestore_uploader/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install dependencies for pokedex_builder
+        working-directory: ${{ env.PATH_POKEDEX_BUILDER }}
+        run: dart pub get
+      - name: Build pokedex using pokedex_builder
+        working-directory: ${{ env.PATH_POKEDEX_BUILDER }}
+        run: dart bin/main.dart -f ${{ inputs.flavor }} -p ../firestore_uploader/pokedex.json
+      - name: Install dependencies for firebase_cred_builder
+        working-directory: ${{ env.PATH_FIREBASE_CRED_BUILDER }}
+        run: dart pub get
+      - name: Build credential.json for firebase project
+        working-directory: ${{ env.PATH_FIREBASE_CRED_BUILDER }}
+        run: dart bin/main.dart -c ${{ secrets.FIREBASE_CREDENTIALS }} -p ../firestore_uploader/credentials.json
+      - name: Install NodeJS dependencies for firestore_uploader
+        working-directory: ${{ env.PATH_FIRESTORE_UPLOADER }}
+        run: npm install
+      - name: Convert .ts to .js
+        working-directory: ${{ env.PATH_FIRESTORE_UPLOADER }}
+        run: npm run build
+      - name: Upload pokedex to Firestore
+        working-directory: ${{ env.PATH_FIRESTORE_UPLOADER }}
+        run: npm run migrate import ${{ inputs.flavor }} pokedex.json
+
+
+
+

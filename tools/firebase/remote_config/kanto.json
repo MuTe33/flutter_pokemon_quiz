@@ -1,0 +1,42 @@
+{
+  "conditions": [],
+  "parameters": {},
+  "parameterGroups": {
+    "feature toggles": {
+      "description": "Feature toggles for kanto",
+      "parameters": {
+        "feature_toggle_user_feedback": {
+          "defaultValue": {
+            "value": "true"
+          },
+          "description": "Controls the user feedback feature",
+          "valueType": "BOOLEAN"
+        },
+        "feature_toggle_pokemon_detail": {
+          "defaultValue": {
+            "value": "true"
+          },
+          "description": "Controls the visibility of Pokemon Detail Page in the app",
+          "valueType": "BOOLEAN"
+        },
+        "feature_toggle_developer_option": {
+          "defaultValue": {
+            "value": "true"
+          },
+          "description": "Controls the visibility of the developer option in the setting",
+          "valueType": "BOOLEAN"
+        }
+      }
+    }
+  },
+  "etag": "etag-436938993963-25",
+  "version": {
+    "versionNumber": "25",
+    "updateOrigin": "CONSOLE",
+    "updateType": "INCREMENTAL_UPDATE",
+    "updateUser": {
+      "email": "mayank271993@gmail.com"
+    },
+    "updateTime": "Wed, 06 Apr 2022 08:45:09 GMT"
+  }
+}

@@ -1,0 +1,40 @@
+analyze:
+  - find ./ -name pubspec.yaml -execdir sh -c "flutter analyze" \;
+
+format:
+  - flutter format . --set-exit-if-changed
+
+build_runner:
+  - find ./ -name pubspec.yaml -execdir sh -c "flutter pub run build_runner build --delete-conflicting-outputs" \;
+
+get_all:
+  - find ./ -name pubspec.yaml -execdir sh -c "flutter pub get" \;
+
+clean_all:
+  - find ./ -not -path '*/\.*' -name pubspec.yaml -execdir sh -c "fvm flutter clean && fvm flutter pub get" \;
+
+run_jhoto:
+  - flutter run lib/main_jhoto.dart --flavor jhoto
+
+run_kanto:
+  - flutter run lib/main_kanto.dart --flavor kanto
+
+test:
+  - find ./ -name pubspec.yaml -execdir sh -c "flutter test" \;
+
+build_app_bundle:
+  - flutter build appbundle --flavor kanto -t lib/main_kanto.dart
+  - flutter build appbundle --flavor jhoto -t lib/main_jhoto.dart
+
+build_apk_bundle:
+  - flutter build apk --flavor kanto -t lib/main_kanto.dart
+  - flutter build apk --flavor jhoto -t lib/main_jhoto.dart
+
+validate_kanto_rc:
+  - npm run rc validate kanto remote_config/kanto.json
+
+get_kanto_rc:
+  - npm run rc get kanto remote_config/kanto.json
+
+publish_kanto_rc:
+  - npm run rc publish kanto remote_config/kanto.json

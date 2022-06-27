@@ -32,7 +32,7 @@
 /build/
 
 # Credentials
-/tools/firestore_uploader/data/kanto/credentials.json
+/tools/firestore_uploader/src/data/kanto/credentials.json
 
 # Web related
 lib/generated_plugin_registrant.dart

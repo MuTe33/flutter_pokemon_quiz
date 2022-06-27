@@ -1,12 +1,12 @@
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
 import 'package:guess_pokemon/src/presentation/page/guess_pokemon_view_model.dart';
 import 'package:guess_pokemon/src/presentation/page/widget/speech_text_widget.dart';
 import 'package:highlight_text/highlight_text.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:ui_core/ui_core.dart';
-import 'package:get_it/get_it.dart';
 
 import '../../../../fake/fake_route.dart';
 import '../../../../mock/mocked_navigator_observer.dart';
@@ -84,7 +84,7 @@ void main() {
       expect(textHighlight.text, mockedGuessPokemonViewModel.statusLabel);
       expect(
         textHighlight
-            .words[mockedGuessPokemonViewModel.pokemonName]?.textStyle.color,
+            .words[mockedGuessPokemonViewModel.pokemonName]?.textStyle?.color,
         mockedGuessPokemonViewModel.pokemonTypeColor,
       );
     });
@@ -104,7 +104,8 @@ void main() {
       final textHighlight = tester.firstWidget(
         find.byType(TextHighlight),
       ) as TextHighlight;
-      textHighlight.words[mockedGuessPokemonViewModel.pokemonName]?.onTap();
+      textHighlight.words[mockedGuessPokemonViewModel.pokemonName]?.onTap
+          ?.call();
 
       verify(
         () => mockedGuessPokemonViewModel.isPokemonDetailFeatureEnabled,

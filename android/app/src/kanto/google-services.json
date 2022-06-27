@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:968325792155:android:aa0e8071490fa35c30a13e",
+        "mobilesdk_app_id": "1:968325792155:android:30995e5aa259ece730a13e",
         "android_client_info": {
-          "package_name": "com.mayando.pokemon_quiz"
+          "package_name": "com.mayando.pokemon_quiz.kanto"
         }
       },
       "oauth_client": [

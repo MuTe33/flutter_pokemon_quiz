@@ -31,6 +31,9 @@
 .pub/
 /build/
 
+# Credentials
+/tools/firestore_uploader/data/kanto/credentials.json
+
 # Web related
 lib/generated_plugin_registrant.dart
 

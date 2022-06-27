@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "436938993963",
-    "project_id": "pokemon-kento",
-    "storage_bucket": "pokemon-kento.appspot.com"
+    "project_number": "968325792155",
+    "project_id": "pokemon-quiz-890",
+    "storage_bucket": "pokemon-quiz-890.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:436938993963:android:e56b36ab0a16e79ff0d56e",
+        "mobilesdk_app_id": "1:968325792155:android:aa0e8071490fa35c30a13e",
         "android_client_info": {
-          "package_name": "com.mayando.pokemon_quiz.kanto"
+          "package_name": "com.mayando.pokemon_quiz"
         }
       },
       "oauth_client": [
         {
-          "client_id": "436938993963-ur1tl6r0m9atubfm9mpahp7ca9nnd23e.apps.googleusercontent.com",
+          "client_id": "968325792155-iu6t7pvjvvob9is05m1b3kh52l8pjcf6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD66tNa7-276YUkCA8Vw9t7ko7gQv98f60"
+          "current_key": "AIzaSyAlpkjHXS3WAnEx3qzXhW0mPzeJTgXQk54"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "436938993963-ur1tl6r0m9atubfm9mpahp7ca9nnd23e.apps.googleusercontent.com",
+              "client_id": "968325792155-iu6t7pvjvvob9is05m1b3kh52l8pjcf6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

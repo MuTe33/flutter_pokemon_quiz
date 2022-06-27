@@ -24,13 +24,6 @@
           },
           "description": "Controls the user feedback feature",
           "valueType": "BOOLEAN"
-        },
-        "feature_toggle_pokedex": {
-          "defaultValue": {
-            "value": "true"
-          },
-          "description": "Toggles the pokedex",
-          "valueType": "BOOLEAN"
         }
       }
     }

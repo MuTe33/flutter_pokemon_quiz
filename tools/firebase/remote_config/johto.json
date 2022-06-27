@@ -25,6 +25,13 @@
           },
           "description": "Controls the visibility of the developer option in the setting",
           "valueType": "BOOLEAN"
+        },
+        "feature_toggle_pokedex": {
+          "defaultValue": {
+            "value": "true"
+          },
+          "description": "Toggles the pokedex",
+          "valueType": "BOOLEAN"
         }
       }
     }

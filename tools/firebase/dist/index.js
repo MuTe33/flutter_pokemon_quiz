@@ -65,7 +65,7 @@ program.command('add-rc')
     .argument('<name>', 'Name of the feature toggle')
     .argument('<default-value>', 'The default value of the feature toggle')
     .argument('<description>', 'The description of the feature toggle')
-    .argument('[flavors]', 'flavors which should be edited, for example "kanto,johto"')
+    .argument('[flavors]', 'flavors which should be edited, for example "kanto,johto"', 'kanto,johto')
     .action(addRemoteConfigValueForAllFlavors);
 program.parseAsync();
 function getRemoteConfig(flavorArgument, outFilename) {

@@ -33,6 +33,7 @@
 
 # Credentials
 /tools/firestore_uploader/src/data/kanto/credentials.json
+/tools/firestore_uploader/src/data/johto/credentials.json
 
 # Web related
 lib/generated_plugin_registrant.dart
